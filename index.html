@@ -8,8 +8,63 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="vue-app">
-        <h1>{{name}}</h1>
+    <div id="vue-app">
+       <!--  <h1>{{greet('night')}}</h1>
+        data binding with directive v-bind: or just :
+        <a v-bind:href="website">The Net Ninja</a>
+        <input type="text" name="" :value="name" id="">
+        <input type="text" name="" :placeholder="job" id="">
+        Another method for binding data with HTML binding 
+        <p v-html="websiteTag  "></p> -->
+
+        <!-- For events -->
+        <h1>Events</h1>
+       <!--  <button v-on:click="age++">Add a year</button>
+        <button v-on:click="age--">Subtract a year</button>
+        or by methods
+        -->
+        <!-- Event modifiers for once by .once -->
+        <button v-on:click.once="add(1)">Add a year</button>
+        <button v-on:click="subtract(1)">Subtract a year</button>
+        <!-- alternative to v-on: is @ -->
+        <button @dblclick="add(10)">Add 10 years</button>
+        <button @dblclick="subtract(10)">Subtract 10 years</button>
+        <p>My age is {{age}}</p>
+        
+        <div id="canvas" v-on:mousemove="updateXY">
+            {{x}},{{y}}
+        </div>
+        <!-- .prevent for preventing from visiting link -->
+        <a v-on:click.prevent="click" href="http://www.google.com">The Google</a>
+        <!-- Keyboard events  .enter acts as an access modifier addtional keys can be added such as alt-->
+      <!--   <h1>Keyboard Events</h1>
+        <label for="" >Name:</label>
+        <input type="text" v-on:keyup.enter="logName">
+        
+        <label for="">Age:</label>
+        <input type="text"  v-on:keyup.alt.enter="logAge"> -->
+
+        <!-- 2 way data binding use modelling instead of v-on -->
+
+        <h1>Keyboard Events</h1>
+        <label for="" >Name:</label>
+        <input type="text" v-model="name">
+        <span>{{name}}</span>
+        <label for="">Age:</label>
+        <input type="text"  v-model="age">
+        <span>{{age}}</span>
+
+        <!-- Computed properties -->
+
+        <h1>Computed Properties</h1>
+        <button v-on:click="a++">Add to A</button>
+        <button v-on:click="b++">Add to B</button>
+        <p>A - {{a}}</p> 
+        <p>B - {{b}}</p>
+        <!-- removed parentheses for making methods functions -->
+        <p>Age + A = {{addToA}}</p>
+        <p>Age + B = {{addToB}}</p>
+
     </div>
 
     <script src="./app.js"></script>
