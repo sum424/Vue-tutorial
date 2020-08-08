@@ -1,0 +1,10 @@
+Commands Shown:
+Get-ExecutionPolicy -List
+Set-ExecutionPolicy Unrestricted
+Set-ExecutionPolicy Unrestricted -Force
+
+To get started: 
+
+     cd vue-cli
+     npm install
+     npm run dev
