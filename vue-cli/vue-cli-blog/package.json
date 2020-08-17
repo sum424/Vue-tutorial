@@ -1,6 +1,6 @@
 {
-  "name": "vue-project",
-  "description": "vue project",
+  "name": "vue-cli-blog",
+  "description": "A Vue.js project",
   "version": "1.0.0",
   "author": "Sum424 <sumanthapa326@gmail.com>",
   "license": "MIT",
@@ -10,9 +10,7 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "global": "^4.4.0",
-    "vue": "^2.6.11",
-    "vue-cli": "^2.9.6"
+    "vue": "^2.5.11"
   },
   "browserslist": [
     "> 1%",
