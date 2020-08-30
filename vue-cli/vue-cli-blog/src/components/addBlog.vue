@@ -1,7 +1,12 @@
+
+  
   <template>
+
+
+
 <div id="add-blog">
     <h2>Add a new Blog Post</h2>
-    <form action="">
+    <form action="" v-if="!submitted">
         <label for="">Blog Title:</label>
         <input type="text" v-model.lazy="blog.title" required>
         <label for="">Blog Content:</label>
@@ -20,12 +25,16 @@
       <select v-model="blog.author">
         <option v-for="author in authors" v-bind:key="author">{{author}}</option>
       </select>
+      <button v-on:click.prevent="post">Add Blog</button>
     </form>
+    <div v-if="submitted">
+      <h3>Thanks for posting</h3>
+    </div>
     <div class="preview">
       <h3>Preview Blog</h3>
       <p>Blog Title:{{blog.title}}</p>
-      <p>Blog Content</p>
-      <p>:{{blog.content}}</p>
+      <p>Blog Content:</p>
+      <p>{{blog.content}}</p>
       <p>Blog Categories:</p>
       <ul>
         <li v-for="category in blog.categories" v-bind:key="category">{{category}}</li>
@@ -33,6 +42,8 @@
       <p>Author:{{blog.author}}</p>
     </div>
   </div>
+    
+
     
 </template>
 
@@ -50,22 +61,31 @@ export default {
             categories: [],
             author: ""
         },
-        authors: ["The Net Ninja", "The Angular Avenger", "The Vue Vanquisher"]
+        authors: ["The Net Ninja", "The Angular Avenger", "The Vue Vanquisher"],
+        submitted: false,
     }
   },
   methods: {
-
+    post: function() {
+      this.$http.post('https://vue-cli-blog-e152c.firebaseio.com/posts.json/', this.blog/* 
+        title: this.blog.title,
+        body: this.blog.content */).then(function(data) {
+        console.log(data);
+        this.submitted = true;
+      });
+    }
   }
 }
 
 </script>
 
-
+/* https://cors-anywhere.herokuapp.com/ */
 <style scoped>
 
 #add-blog *{
     margin: 20px auto;
     max-width: 500px;
+    box-sizing: border-box;
 }
 
 label {
